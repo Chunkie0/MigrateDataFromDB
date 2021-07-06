@@ -16,10 +16,6 @@ chinook_tables = cur.fetchall()
 
 cursor = music_shop_db.cursor()
 
-print(music_shop_db._open_connection)
-cursor.execute("SELECT * FROM customers")
-print(cursor.fetchall())
-
 for table in chinook_tables:
     ch_table = table[0]
     if 'sqlite' not in ch_table:
