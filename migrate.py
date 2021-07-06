@@ -16,8 +16,6 @@ chinook_tables = cur.fetchall()
 
 cursor = music_shop_db.cursor()
 
-
-cursor.execute("SET FOREIGN_KEY_CHECKS=0")
 for table in chinook_tables:
     ch_table = table[0]
     if 'sqlite' not in ch_table:
@@ -29,6 +27,7 @@ for table in chinook_tables:
                 i = content_list.index(None)
                 content_list[i] = 0
             content_tuple = tuple(content_list)
+            cursor.execute("SET FOREIGN_KEY_CHECKS=0")
             cursor.execute(f"INSERT INTO {ch_table} VALUES {content_tuple}")
 music_shop_db.commit()
 music_shop_db.close()
