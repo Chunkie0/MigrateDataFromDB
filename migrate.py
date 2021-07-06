@@ -30,8 +30,9 @@ for table in chinook_tables:
 music_shop_db.commit()
 music_shop_db.close()
 
-# 100 times slower
-''''
+# below code is 100 times slower
+
+'''
 import mysql.connector
 import sqlite3
 
@@ -65,4 +66,4 @@ for table in chinook_tables:
             cursor.execute(f"INSERT INTO {ch_table} VALUES {content_tuple}")
 music_shop_db.commit()
 music_shop_db.close()
-''''''''''''''''''''''''''''''''''''
+'''
