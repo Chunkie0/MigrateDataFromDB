@@ -25,6 +25,10 @@ for table in chinook_tables:
         columns = tuple([i[0] for i in table_content.description])
         values = table_content.fetchall()
         insert = "".join((f"INSERT INTO {ch_table} {columns} VALUES {str(values).replace('[', '').replace(']', '').replace('None', 'Null')}").split("'", len(columns)*2))
+        # cursor.execute(f"ALTER TABLE {ch_table} ADD COLUMN createdAt timestamp NOT NULL DEFAULT current_timestamp")
+        # cursor.execute(f"ALTER TABLE {ch_table}} ADD COLUMN updatedAt DATETIME DEFAULT current_timestamp ON UPDATE current_timestamp")
+        # cursor.execute(f"ALTER TABLE {ch_table}} ADD COLUMN is_deleted bit NOT NULL DEFAULT 0")
+        # needs triggers ..... 
         cursor.execute(insert)
         
 music_shop_db.commit()
